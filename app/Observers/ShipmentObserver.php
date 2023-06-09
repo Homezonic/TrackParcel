@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Shipment;
+use App\Models\TrackingInfo;
 
 class ShipmentObserver
 {
@@ -15,7 +16,7 @@ class ShipmentObserver
             'shipment_id' => $shipment->id,
             'status'      => 'Label Created',
             'details'     => 'Label Created Successfully',
-            'location'    => $shipment->sender_state . ', ' . $shipment->sender_country,
+            'location'    => $shipment->shipper_state . ', ' . $shipment->shipper_country,
             'date'        => now(),
         ]);
     }

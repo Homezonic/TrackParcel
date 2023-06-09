@@ -20,6 +20,7 @@ return [
     'shipmentadd'              => 'New Shipment information have been added successfully!',
     'shipmentupdated'          => 'Shipment information have been updated successfully!',
     'shipmentupdated'          => 'Shipment information have been deleted successfully!',
+    'trackingupdated'          => 'New Tracking Record Updated!',
     's1'                       => 'Tracking Number',
     's2'                       => 'Name',
     's3'                       => 'Shipper Information',
@@ -39,4 +40,5 @@ return [
     's17'                      => 'Country',
     's18'                      => 'Add Shipment',
     's19'                      => 'Update Shipment Details',
+    's20'                      => 'New Track Record for: ',
 ];

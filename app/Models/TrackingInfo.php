@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class TrackingInfo extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'shipment_id',
-        'tracking_number',
-        'label_status',
-    ];
+    protected $table    = 'tracking_info';
+    protected $fillable = ['shipment_id', 'status', 'details', 'location', 'date'];
+
     public function shipment()
     {
         return $this->belongsTo(Shipment::class);
