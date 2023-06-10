@@ -20,14 +20,10 @@
                       <div class="card">
                         <div class="card-header pb-0">
                           <div class="row">
-                            <div class="col-lg-6 col-7">
-                              <h6> <i class="fa fa-plane text-info" aria-hidden="true"></i> Recently Added</h6>
-                              <p class="text-sm mb-0">
-                              </p>
-                            </div>
+                            <div class="col-lg-6"></div>
                             <div class="col-lg-6 col-5 my-auto text-end">
                               <div class="dropdown float-lg-end pe-4">
-                                <a href="/createShipment" target="_self"
+                                <a href="{{ route('createShipment') }}" target="_self"
                                     class="btn btn-info active mb-0 text-white" role="button" aria-pressed="true">
                                     Add New
                                 </a>
@@ -40,7 +36,7 @@
                             <span class="alert-text text-white">{{ session('success') }}</span>
                             <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-@endif
+                        @endif
                         </div>
                         <div class="card-body px-0 pb-2">
                           <div class="table-responsive">
@@ -66,11 +62,11 @@
                                     <p class="text-xs font-weight-bold mb-0 text-center">{{ $startRow++ }}</p>
                                   </td>
                                   <td>
-                                    <p class="text-xs font-weight-bold mb-0 text-center">{{ $shipment->tracking_id }}</p>
+                                    <p class="font-weight-bold mb-0 text-center ">{{ $shipment->tracking_id }}</p>
                                     <p class="text-xs text-secondary mb-0 text-center">
                                       <a href="{{ route('shipments.edit', $shipment->id) }}" class="" data-bs-toggle="tooltip"
                                     data-bs-original-title="Edit Tracking">
-                                    <i class="fas fa-edit text-black"></i>
+                                    <i class="fas fa-edit text-info"></i>
                                 </a>
                                     <span>&nbsp;</span>
                                     <a href="#" class="" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" wire:click.prevent="confirmDelete({{ $shipment->id }})">
@@ -87,13 +83,47 @@
                                     <p class="text-xs text-secondary mb-0">{{ $shipment->receiver_city }}, {{ $shipment->receiver_state }}</p>
                                   </td>
                                   <td class="align-middle text-center text-sm">
-                                    <span class="badge badge-sm bg-gradient-success">On Transit</span>
-                                  </td>
+                                    @php
+                                        $status = $shipment->trackingInfo()->latest()->value('status');
+                                        $statusClass = '';
+
+                                        switch ($status) {
+                                            case 'Pickup':
+                                                $statusClass = 'bg-gradient-success';
+                                                break;
+                                            case 'On Transit':
+                                                $statusClass = 'bg-gradient-info';
+                                                break;
+                                            case 'On Hold':
+                                                $statusClass = 'bg-gradient-warning';
+                                                break;
+                                            case 'Delayed':
+                                                $statusClass = 'bg-gradient-secondary';
+                                                break;
+                                            case 'Out for Delivery':
+                                                $statusClass = 'bg-gradient-primary';
+                                                break;
+                                            case 'Failed Delivery Attempt':
+                                                $statusClass = 'bg-gradient-danger';
+                                                break;
+                                            case 'Delivered':
+                                                $statusClass = 'bg-gradient-success';
+                                                break;
+                                            default:
+                                            $status = 'Label Created';
+                                                $statusClass = 'bg-gradient-info';
+                                        }
+                                    @endphp
+
+                                    <span class="badge badge-sm {{ $statusClass }}">{{ $status }}</span>
+                                </td>
+
+
                                   <td class="align-middle text-center">
                                     <span class="text-xs font-weight-bold">{{ $shipment->created_at }}</span>
                                   </td>
                                   <td class="align-middle">
-                                    <a href="#" class="mx-3" data-bs-toggle="tooltip"
+                                    <a href="{{ route('trackrecord', $shipment->id) }}" class="mx-3" data-bs-toggle="tooltip"
                                     data-bs-original-title="Add Record">
                                     <i class="fas fa-edit text-success"></i>
                                 </a>

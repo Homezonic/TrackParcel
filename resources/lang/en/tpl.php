@@ -41,4 +41,5 @@ return [
     's18'                      => 'Add Shipment',
     's19'                      => 'Update Shipment Details',
     's20'                      => 'New Track Record for: ',
+    's21'                      => 'Update Site Settings ',
 ];

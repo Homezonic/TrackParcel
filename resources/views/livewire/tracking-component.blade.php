@@ -30,16 +30,25 @@
                         <form wire:submit.prevent="saveTrackingInfo" role="form text-center">
                             <div class="mb-3">
                                 <label for="status" class="form-control-label">Status</label>
-                                <input type="text" wire:model="status" class="form-control" id="status">
+                               <select wire:model="status" class="form-select" id="status">
+                                    <option value="">Select Status</option>
+                                    <option value="Pickup">Pickup</option>
+                                    <option value="On Transit">On Transit</option>
+                                    <option value="On Hold">On Hold</option>
+                                    <option value="Delayed">Delayed</option>
+                                    <option value="Out for Delivery">Out for Delivery</option>
+                                    <option value="Failed Delivery Attempt">Failed Delivery Attempt</option>
+                                    <option value="Delivered">Delivered</option>
+                                </select>
                                 @error('status') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="details" class="form-label">Details</label>
+                                <label for="details" class="form-label">Add Details <small>(optional)</small></label>
                                 <input type="text" wire:model="details" class="form-control" id="details">
                                 @error('details') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="location" class="form-label">Location</label>
+                                <label for="location" class="form-label">Location <small>(e.g Houston, TX)</small></label>
                                 <input type="text" wire:model="location" class="form-control" id="location">
                                 @error('location') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>

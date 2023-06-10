@@ -53,7 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
-    Route::get('/settings', Settings::class)->name('settings');
 });
 //Shipment Routes
 Route::get('/createShipment', ShipmentComponent::class)->name('createShipment');
@@ -62,3 +61,4 @@ Route::get('/shipments', AllShipments::class)->name('shipments.index');
 Route::get('/shipments/{id}/edit', EditShipments::class)->name('shipments.edit');
 Route::get('/shipments/{id}/delete', DeleteShipment::class)->name('shipments.delete');
 Route::get('/trackrecord/{shipmentId}', TrackingComponent::class)->name('trackrecord');
+Route::get('/settings', Settings::class)->name('settings');

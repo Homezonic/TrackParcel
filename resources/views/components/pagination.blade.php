@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center">
-    <div class="mt-3">
+    {{-- <div class="mt-3">
         <label for="perPage" class="form-label">Records per page:</label>
         <select wire:model="perPage" id="perPage" class="form-select">
             <option value="5">5</option>
@@ -7,7 +7,7 @@
             <option value="20">20</option>
             <option value="100">100</option>
         </select>
-    </div>
+    </div> --}}
     <div class="mt-3">
 @if ($paginator->hasPages())
     <nav>
