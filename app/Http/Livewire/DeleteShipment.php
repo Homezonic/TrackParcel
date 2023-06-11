@@ -17,8 +17,12 @@ class DeleteShipment extends Component
 
     public function deleteShipment()
     {
-        $this->shipment->delete();
-        return redirect()->route('all-shipments')->with($this->showSuccesNotification = true);
+        if (env('IS_DEMO')) {
+            $this->showDemoNotification = true;
+        } else {
+            $this->shipment->delete();
+            return redirect()->route('all-shipments')->with($this->showSuccesNotification = true);
+        }
     }
 
     public function render()

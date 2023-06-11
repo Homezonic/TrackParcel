@@ -21,7 +21,9 @@ class Login extends Component
         if (auth()->user()) {
             redirect('/dashboard');
         }
-        $this->fill(['email' => 'admin@trackparcel.com', 'password' => 'admin']);
+        if (env('IS_DEMO')) {
+            $this->fill(['email' => 'admin@trackparcel.com', 'password' => 'admin']);
+        }
     }
 
     public function login()

@@ -23,23 +23,27 @@ class TrackingComponent extends Component
 
     public function saveTrackingInfo()
     {
-        $this->validate([
-            'status'     => 'required',
-            'details'    => 'required',
-            'location'   => 'required',
-            'date'       => 'required',
-        ]);
+        if (env('IS_DEMO')) {
+            $this->showDemoNotification = true;
+        } else {
+            $this->validate([
+                'status'     => 'required',
+                'details'    => 'required',
+                'location'   => 'required',
+                'date'       => 'required',
+            ]);
 
-        TrackingInfo::create([
-            'shipment_id' => $this->shipment->id,
-            'status'      => $this->status,
-            'details'     => $this->details,
-            'location'    => $this->location,
-            'date'        => $this->date,
-        ]);
+            TrackingInfo::create([
+                'shipment_id' => $this->shipment->id,
+                'status'      => $this->status,
+                'details'     => $this->details,
+                'location'    => $this->location,
+                'date'        => $this->date,
+            ]);
 
-        $this->resetForm();
-        $this->showSuccesNotification = true;
+            $this->resetForm();
+            $this->showSuccesNotification = true;
+        }
     }
 
     public function resetForm()

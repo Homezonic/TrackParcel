@@ -5,39 +5,9 @@
                 <h6 class="mb-0">{{ __('tpl.s4') }}</h6>
             </div> --}}
             <div class="card-body pt-4 p-3">
-
-                @if ($showDemoNotification)
-                    <div wire:model="showDemoNotification" class="mt-3  alert alert-primary alert-dismissible fade show"
-                        role="alert">
-                        <span class="alert-text text-white">
-                            {{ __('tpl.demoNotif') }}</span>
-                        <button wire:click="$set('showDemoNotification', false)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
-                @endif
                 <div class="row my-4">
                     <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                       <div class="card">
-                        <div class="card-header pb-0">
-                          <div class="row">
-                            <div class="col-lg-6"></div>
-                            <div class="col-lg-6 col-5 my-auto text-end">
-                              <div class="dropdown float-lg-end pe-4">
-                                <a href="{{ route('createShipment') }}" target="_self"
-                                    class="btn btn-info active mb-0 text-white" role="button" aria-pressed="true">
-                                    Add New
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          @if (session()->has('success'))
-                          <div class="mt-3 alert alert-danger alert-dismissible fade show" role="alert">
-                            <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
-                            <span class="alert-text text-white">{{ session('success') }}</span>
-                            <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
-                        </div>
                         <div class="card-body px-0 pb-2">
                           <div class="table-responsive">
                             <table class="table align-items-center mb-0">
@@ -100,7 +70,6 @@
                                                 $statusClass = 'bg-gradient-success';
                                                 break;
                                             default:
-                                            $status = 'Label Created';
                                                 $statusClass = 'bg-gradient-info';
                                         }
                                     @endphp
@@ -109,19 +78,15 @@
                                 </td>
 
 
+
                                   <td class="align-middle text-center">
                                     <span class="text-xs font-weight-bold">{{ $shipment->created_at }}</span>
                                   </td>
                                   <td class="align-middle">
-                                    <a href="{{ route('shipments.edit', $shipment->id) }}" class="mx-3" data-bs-toggle="tooltip"
+                                    <a href="{{ route('trackrecord', $shipment->id) }}" class="mx-3" data-bs-toggle="tooltip"
                                     data-bs-original-title="Add Record">
-                                    <i class="fas fa-edit text-info"></i>
-                                  </a>
-                                  <span>&nbsp;</span>
-                                    <a href="#" class="" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" wire:click.prevent="confirmDelete({{ $shipment->id }})"
-                                      data-bs-original-title="Delete Record">
-                                      <i class="cursor-pointer fas fa-trash text-danger"></i>
-                                  </a>
+                                    <i class="fas fa-plus text-success"></i>
+                                </a>
                                   </td>
 
                                 </tr>

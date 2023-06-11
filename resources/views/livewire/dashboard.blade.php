@@ -1,7 +1,7 @@
  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
@@ -9,7 +9,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Tracking</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ number_format(47377) }}
+                      {{ number_format($totalCreatedShipments) }}
                       {{-- <span class="text-success text-sm font-weight-bolder">Today +10</span> --}}
                     </h5>
                   </div>
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
@@ -31,7 +31,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Delivered</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ number_format(4377) }}
+                      {{ number_format($totalDeliveredShipments) }}
                       {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
                     </h5>
                   </div>
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
@@ -53,7 +53,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">On Transit</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ number_format(377) }}
+                      {{ number_format($totalUndeliveredShipments) }}
                       {{-- <span class="text-danger text-sm font-weight-bolder">-2%</span> --}}
                     </h5>
                   </div>
@@ -61,28 +61,6 @@
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">*</p>
-                    <h5 class="font-weight-bolder mb-0">
-                     new feature
-                      {{-- <span class="text-success text-sm font-weight-bolder">+5%</span> --}}
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -102,10 +80,6 @@
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
                   <div class="dropdown float-lg-end pe-4">
-                    <a href="/createShipment" target="_blank"
-                        class="btn btn-info active mb-0 text-white" role="button" aria-pressed="true">
-                        Add New
-                    </a>
                   </div>
                 </div>
               </div>
@@ -114,61 +88,76 @@
               <div class="table-responsive">
                 <table class="table align-items-center mb-0">
                   <thead>
-                    <tr>
-                      <th class="text-uppercase text-center text-xs">S/N</th>
-                      <th class="text-uppercase text-center text-xs">Tracking Number</th>
-                      <th class="text-uppercase text-center text-xs">Sender</th>
-                      <th class="text-uppercase text-center text-xs">Receiver</th>
-                      <th class="text-uppercase text-center text-xs">Status</th>
-                      <th class="text-uppercase text-center text-xs">Date</th>
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
+                      <tr>
+                          <th class="text-uppercase text-center text-xs">S/N</th>
+                          <th class="text-uppercase text-center text-xs">Tracking Number</th>
+                          <th class="text-uppercase text-center text-xs">Sender</th>
+                          <th class="text-uppercase text-center text-xs">Receiver</th>
+                          <th class="text-uppercase text-center text-xs">Status</th>
+                          <th class="text-uppercase text-center text-xs">Date</th>
+                      </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0 text-center">  1</p>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0 text-center">PT7442382838</p>
-                        <p class="text-xs text-secondary mb-0 text-center">
-                          <a href="#" class="" data-bs-toggle="tooltip"
-                        data-bs-original-title="Edit Tracking">
-                        <i class="fas fa-edit text-black"></i>
-                    </a>
-                    <span>
-                       <a href="#" class="" data-bs-toggle="tooltip"
-                        data-bs-original-title="Delete">
-                        <i class="cursor-pointer fas fa-trash text-danger"></i>
+                      @foreach ($latestShipments as $index => $shipment)
+                          <tr>
+                              <td>
+                                  <p class="text-xs font-weight-bold mb-0 text-center">{{ $index + 1 }}</p>
+                              </td>
+                              <td>
+                                  <p class="font-weight-bold mb-0 text-center">{{ $shipment->tracking_id }}</p>
+                              </td>
+                              <td class="align-middle text-center">
+                                  <p class="text-xs font-weight-bold mb-0">{{ $shipment->shipper_name }}</p>
+                                  <p class="text-xs text-secondary mb-0">{{ $shipment->shipper_state .', '. $shipment->shipper_country }}</p>
+                              </td>
+                              <td class="align-middle text-center">
+                                  <p class="text-xs font-weight-bold mb-0">{{ $shipment->receiver_name }}</p>
+                                  <p class="text-xs text-secondary mb-0">{{ $shipment->receiver_state .', '. $shipment->receiver_country }}</p>
+                              </td>
+                              <td class="align-middle text-center text-sm">
+                                @php
+                                        $status = $shipment->trackingInfo->status;
+                                        $statusClass = '';
 
-                    </span>
-                        </p>
-                      </td>
-                      <td class="align-middle text-center">
-                        <p class="text-xs font-weight-bold mb-0">John Michael</p>
-                        <p class="text-xs text-secondary mb-0">Lagos</p>
-                      </td>
-                      <td class="align-middle text-center">
-                        <p class="text-xs font-weight-bold mb-0">Niven Michael</p>
-                        <p class="text-xs text-secondary mb-0">Abuja</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">On Transit</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-xs font-weight-bold">23/04/18</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="#" class="mx-3" data-bs-toggle="tooltip"
-                        data-bs-original-title="Add Record">
-                        <i class="fas fa-edit text-success"></i>
-                    </a>
-                      </td>
+                                        switch ($status) {
+                                            case 'Pickup':
+                                                $statusClass = 'bg-gradient-success';
+                                                break;
+                                            case 'On Transit':
+                                                $statusClass = 'bg-gradient-info';
+                                                break;
+                                            case 'On Hold':
+                                                $statusClass = 'bg-gradient-warning';
+                                                break;
+                                            case 'Delayed':
+                                                $statusClass = 'bg-gradient-secondary';
+                                                break;
+                                            case 'Out for Delivery':
+                                                $statusClass = 'bg-gradient-primary';
+                                                break;
+                                            case 'Failed Delivery Attempt':
+                                                $statusClass = 'bg-gradient-danger';
+                                                break;
+                                            case 'Delivered':
+                                                $statusClass = 'bg-gradient-success';
+                                                break;
+                                            default:
+                                            $status = 'Label Created';
+                                                $statusClass = 'bg-gradient-info';
+                                        }
+                                    @endphp
 
-                    </tr>
-
+                                    <span class="badge badge-sm {{ $statusClass }}">{{ $status }}</span>
+                              </td>
+                              <td class="align-middle text-center">
+                                  <span class="text-xs font-weight-bold">{{ $shipment->created_at->format('d/m/y') }}</span>
+                              </td>
+                          </tr>
+                      @endforeach
                   </tbody>
-                </table>
+              </table>
+
+
               </div>
             </div>
           </div>

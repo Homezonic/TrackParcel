@@ -19,16 +19,24 @@ class AllShipments extends Component
 
     public function confirmDelete($id)
     {
-        $this->shipmentToDelete = Shipment::findOrFail($id);
-        $this->confirmingDelete = true;
+        if (env('IS_DEMO')) {
+            $this->showDemoNotification = true;
+        } else {
+            $this->shipmentToDelete = Shipment::findOrFail($id);
+            $this->confirmingDelete = true;
+        }
     }
 
     public function deleteShipment()
     {
-        $this->shipmentToDelete->delete();
-        $this->confirmingDelete       = false;
-        session()->flash('success', 'Shipment deleted successfully.');
-        return redirect()->route('all-shipments');
+        if (env('IS_DEMO')) {
+            $this->showDemoNotification = true;
+        } else {
+            $this->shipmentToDelete->delete();
+            $this->confirmingDelete       = false;
+            session()->flash('success', 'Shipment deleted successfully.');
+            return redirect()->route('all-shipments');
+        }
     }
 
     public function cancelDelete()

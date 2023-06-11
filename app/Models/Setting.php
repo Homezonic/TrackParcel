@@ -13,6 +13,7 @@ class Setting extends Model
         'tracking_numbers',
         'site_name',
         'site_description',
+        'keyword',
         'site_logo',
         'site_icon',
         'site_email',

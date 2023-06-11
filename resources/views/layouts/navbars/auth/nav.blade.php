@@ -7,17 +7,20 @@
                 <h6 class="font-weight-bolder mb-0 text-capitalize">
                     {{ str_replace('-', ' ', Route::currentRouteName()) }}</h6>
             </nav>
-            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
+            <div class="mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
                 <div class="nav-item d-flex align-self-end">
-                    <a href="/trackparcel" target="_blank"
-                        class="btn btn-primary active mb-0 text-white" role="button" aria-pressed="true">
-                        Tracking Page
+                    <a href="{{ route('createShipment') }}" target="_self"
+                        class="btn btn-secondary active mb-0 text-white" role="button" aria-pressed="true">
+                        Add New
                     </a>
                 </div>
+
                 <div class="ms-md-3 pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="tracking number..">
+                    <div class="nav-item d-flex align-self-end">
+                        <a href="{{ route('trackparcel') }}" target="_self"
+                            class="btn btn-primary active mb-0 text-white" role="button" aria-pressed="true">
+                            Track
+                        </a>
                     </div>
                 </div>
                 <ul class="navbar-nav justify-content-end">

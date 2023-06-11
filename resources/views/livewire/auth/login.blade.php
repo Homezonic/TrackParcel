@@ -6,10 +6,14 @@
                     <div class="card card-plain mt-8">
                         <div class="card-header pb-0 text-left bg-transparent">
                             <h3 class="font-weight-bolder text-info text-gradient">{{ __('tpl.welcome') }}</h3>
-                            <p class="mb-0">{{__('Sign in with these credentials:') }}</p>
+                            @if(env('IS_DEMO'))
+                            <p class="mb-0">{{ __('Sign in with these credentials:') }}</p>
                             <br/>
                             <p class="mb-0">{{ __('Email: ') }}<b>{{ __('admin@trackparcel.com') }}</b></p>
                             <p class="mb-0">{{ __('Password: ') }}<b>{{ __('admin') }}</b></p>
+                        @endif
+
+
                         </div>
                         <div class="card-body">
                             <form wire:submit.prevent="login" action="#" method="POST" role="form text-left">

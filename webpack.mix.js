@@ -1,4 +1,6 @@
 const mix = require("laravel-mix");
+const webpack = require('webpack');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -16,3 +18,13 @@ mix.sass(
     "resources/scss/soft-ui-dashboard.scss",
     "public/assets/css/soft-ui-dashboard.css"
 );
+
+mix.webpackConfig({
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+        }),
+    ],
+});

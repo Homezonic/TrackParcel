@@ -59,6 +59,13 @@
                                         @error('settings.site_description') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="siteKeyword" class="form-label">Site keywords</label>
+                                        <input class="form-control" id="siteKeyword" data-color="dark" type="text" value="{{ $settings->keyword }}" placeholder="Enter something" wire:model.defer="settings.keyword"/>
+                                    @error('settings.keyword') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="logo" class="form-label">Logo <small>(250 x 250 min & 512 x 512 max)</small></label>

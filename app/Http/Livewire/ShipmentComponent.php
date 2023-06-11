@@ -91,11 +91,15 @@ class ShipmentComponent extends Component
 
     public function createShipment()
     {
-        $validatedData = $this->validate();
+        if (env('IS_DEMO')) {
+            $this->showDemoNotification = true;
+        } else {
+            $validatedData = $this->validate();
 
-        $shipment = Shipment::create($validatedData);
-        $this->resetFields();
-        $this->showSuccesNotification = true;
+            $shipment = Shipment::create($validatedData);
+            $this->resetFields();
+            $this->showSuccesNotification = true;
+        }
     }
     public function editShipment($id)
     {
