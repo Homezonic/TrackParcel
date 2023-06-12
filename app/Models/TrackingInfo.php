@@ -10,6 +10,9 @@ class TrackingInfo extends Model
     use HasFactory;
     protected $table    = 'tracking_info';
     protected $fillable = ['shipment_id', 'status', 'details', 'location', 'date'];
+    protected $casts    = [
+        'date' => 'datetime',
+    ];
 
     public function shipment()
     {

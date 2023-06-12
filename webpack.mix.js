@@ -13,7 +13,15 @@ const webpack = require('webpack');
  |
  */
 
-mix.js("resources/js/app.js", "public/assets/js/soft-ui-dashboard.js");
+mix.js(
+    "resources/js/app.js", "public/assets/js/soft-ui-dashboard.js",
+    "resources/js/script.js", "public/js",
+);
+mix.js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css", [
+        require("tailwindcss"),
+    ]);
+
 mix.sass(
     "resources/scss/soft-ui-dashboard.scss",
     "public/assets/css/soft-ui-dashboard.css"

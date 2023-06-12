@@ -54,6 +54,6 @@ class Shipment extends Model
 
     public function trackingInfo()
     {
-        return $this->hasOne(TrackingInfo::class);
+        return $this->hasMany(TrackingInfo::class);
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Livewire\ShipmentComponent;
 use App\Http\Livewire\TrackingComponent;
 use App\Http\Livewire\DeliveredShipments;
 use App\Http\Livewire\UndeliveredShipments;
+use App\Http\Controllers\ShipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,9 @@ use App\Http\Livewire\UndeliveredShipments;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+Route::view('/', 'livewire.home.welcome')->name('index');
+Route::view('/track', 'livewire.home.trackparcel')->name('track');
+
 Route::get('/trackparcel', Dashboard::class)->name('trackparcel');
 Route::get('/login', Login::class)->name('login');
 Route::middleware('auth')->group(function () {
@@ -43,3 +44,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/delivered-shipments', DeliveredShipments::class)->name('delivered-shipments');
     Route::get('/change-password', ChangePassword::class)->name('change-password');
 });
+Route::post('/search', [ShipmentController::class, 'search'])->name('search');
+Route::get('/trackresult', function () { return view('livewire.home.trackresult');})->name('trackresult');
