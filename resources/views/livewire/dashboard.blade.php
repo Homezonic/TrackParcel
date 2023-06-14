@@ -7,7 +7,7 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Tracking</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Shipments</p>
                     <h5 class="font-weight-bolder mb-0">
                       {{ number_format($totalCreatedShipments) }}
                       {{-- <span class="text-success text-sm font-weight-bolder">Today +10</span> --}}
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-app text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -37,8 +37,8 @@
                   </div>
                 </div>
                 <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                  <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
+                    <i class="ni ni-delivery-fast text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -59,8 +59,8 @@
                   </div>
                 </div>
                 <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                  <div class="icon icon-shape bg-gradient-secondary shadow text-center border-radius-md">
+                    <i class="ni ni-user-run text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -116,34 +116,33 @@
                               </td>
                               <td class="align-middle text-center text-sm">
                                 @php
-                                        $status = $shipment->trackingInfo->status;
+                                        $status = $shipment->trackingInfo->first()->status;
                                         $statusClass = '';
-
                                         switch ($status) {
                                             case 'Pickup':
-                                                $statusClass = 'bg-gradient-success';
+                                                $statusClass = 'bg-gradient-secondary';
                                                 break;
                                             case 'On Transit':
                                                 $statusClass = 'bg-gradient-info';
                                                 break;
                                             case 'On Hold':
-                                                $statusClass = 'bg-gradient-warning';
+                                                $statusClass = 'bg-gradient-danger';
                                                 break;
                                             case 'Delayed':
-                                                $statusClass = 'bg-gradient-secondary';
-                                                break;
-                                            case 'Out for Delivery':
                                                 $statusClass = 'bg-gradient-primary';
                                                 break;
+                                            case 'Out for Delivery':
+                                                $statusClass = 'bg-gradient-info';
+                                                break;
                                             case 'Failed Delivery Attempt':
-                                                $statusClass = 'bg-gradient-danger';
+                                                $statusClass = 'bg-gradient-warning';
                                                 break;
                                             case 'Delivered':
                                                 $statusClass = 'bg-gradient-success';
                                                 break;
                                             default:
                                             $status = 'Label Created';
-                                                $statusClass = 'bg-gradient-info';
+                                                $statusClass = 'bg-gradient-secondary';
                                         }
                                     @endphp
 

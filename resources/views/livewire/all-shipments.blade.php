@@ -79,29 +79,29 @@
 
                                         switch ($status) {
                                             case 'Pickup':
-                                                $statusClass = 'bg-gradient-success';
+                                                $statusClass = 'bg-gradient-secondary';
                                                 break;
                                             case 'On Transit':
                                                 $statusClass = 'bg-gradient-info';
                                                 break;
                                             case 'On Hold':
-                                                $statusClass = 'bg-gradient-warning';
+                                                $statusClass = 'bg-gradient-danger';
                                                 break;
                                             case 'Delayed':
-                                                $statusClass = 'bg-gradient-secondary';
-                                                break;
-                                            case 'Out for Delivery':
                                                 $statusClass = 'bg-gradient-primary';
                                                 break;
+                                            case 'Out for Delivery':
+                                                $statusClass = 'bg-gradient-info';
+                                                break;
                                             case 'Failed Delivery Attempt':
-                                                $statusClass = 'bg-gradient-danger';
+                                                $statusClass = 'bg-gradient-warning';
                                                 break;
                                             case 'Delivered':
                                                 $statusClass = 'bg-gradient-success';
                                                 break;
                                             default:
                                             $status = 'Label Created';
-                                                $statusClass = 'bg-gradient-info';
+                                                $statusClass = 'bg-gradient-secondary';
                                         }
                                     @endphp
 
@@ -114,7 +114,7 @@
                                   </td>
                                   <td class="align-middle">
                                     <a href="{{ route('shipments.edit', $shipment->id) }}" class="mx-3" data-bs-toggle="tooltip"
-                                    data-bs-original-title="Add Record">
+                                    data-bs-original-title="Edit Shipment">
                                     <i class="fas fa-edit text-info"></i>
                                   </a>
                                   <span>&nbsp;</span>

@@ -40,10 +40,7 @@ class MainApp extends Component
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function render()
-    {
-        return view('layouts.main-app');
-    }
+
     public function search()
     {
         // Perform the search logic here
@@ -58,5 +55,9 @@ class MainApp extends Component
 
         // Shipment found, emit an event to update the tracking view
         $this->emit('shipmentFound', $shipment);
+    }
+    public function render()
+    {
+        return view('layouts.main-app');
     }
 }

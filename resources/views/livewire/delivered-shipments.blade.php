@@ -50,9 +50,9 @@
 
                                   <td class="align-middle text-center">
                                     <span class="text-xs font-weight-bold">{{ $shipment->created_at }}</span>
-                                  </td>
+                                  </td>`
                                   <td class="align-middle">
-                                    <a href="{{ route('trackrecord', $shipment->id) }}" class="mx-3" data-bs-toggle="tooltip"
+                                    <a href="{{ route('viewrecord', $shipment['shipment_id']) }}" class="mx-3" data-bs-toggle="tooltip"
                                     data-bs-original-title="View Record">
                                     <i class="fas fa-eye text-success"></i>
                                 </a>

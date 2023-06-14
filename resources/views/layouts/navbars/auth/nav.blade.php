@@ -17,7 +17,7 @@
 
                 <div class="ms-md-3 pe-md-3 d-flex align-items-center">
                     <div class="nav-item d-flex align-self-end">
-                        <a href="{{ route('trackparcel') }}" target="_self"
+                        <a href="{{ route('track') }}" target="_blank"
                             class="btn btn-primary active mb-0 text-white" role="button" aria-pressed="true">
                             Track
                         </a>

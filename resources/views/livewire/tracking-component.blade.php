@@ -80,17 +80,39 @@
                             @foreach($trackingInfos as $trackingInfo)
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                 <div class="d-flex align-items-center">
+                                    @if ($trackingInfo->status === 'Out For Delivery' || $trackingInfo->status === 'Delivered')
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-truck"></i>
+                                    </button>
+                                    @elseif ($trackingInfo->status === 'Delayed' || $trackingInfo->status === 'On Hold')
                                     <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
                                         <i class="fas fa-arrow-down"></i>
                                     </button>
+                                    @else
+                                    <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-3 btn-sm d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </button>
+                                    @endif
+
                                     <div class="d-flex flex-column">
                                         <h6 class="mb-1 text-dark text-sm">{{ $trackingInfo->status }}</h6>
                                         <span class="text-xs">{{ $trackingInfo->details }}</span>
                                     </div>
                                 </div>
+                                @if ($trackingInfo->status === 'Out For Delivery' || $trackingInfo->status === 'Delivered')
+                                <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                                    {{ $trackingInfo->date }}
+                                </div>
+                                @elseif ($trackingInfo->status === 'Delayed' || $trackingInfo->status === 'On Hold')
                                 <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
                                     {{ $trackingInfo->date }}
                                 </div>
+                                @else
+                                <div class="d-flex align-items-center text-info text-gradient text-sm font-weight-bold">
+                                    {{ $trackingInfo->date }}
+                                </div>
+                                </button>
+                                @endif
                             </li>
                             @endforeach
                         </ul>

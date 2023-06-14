@@ -35,7 +35,7 @@
                                     </h4>
                                     <p class="text-base font-normal text-gray-600">
                                         {{ $trackingInfo['tracking_info']->first()->status }} on
-                                        {{ $trackingInfo['tracking_info']->first()->created_at->format('F d, Y \a\t h:i a') }}
+                                        {{ $trackingInfo['tracking_info']->first()->date->format('F d, Y \a\t h:i a') }}
                                 </div>
                                 <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
                                     <div class="flex flex-col items-center justify-center">

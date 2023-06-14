@@ -80,7 +80,7 @@
                                         @error('icon') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="tawktoId" class="form-label">Tawk.to ID</label>
                                         <input type="text" wire:model.defer="settings.tawkto_id" class="form-control" id="tawktoId">

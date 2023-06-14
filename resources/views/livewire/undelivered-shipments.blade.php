@@ -49,28 +49,28 @@
 
                                         switch ($status) {
                                             case 'Pickup':
-                                                $statusClass = 'bg-gradient-success';
+                                                $statusClass = 'bg-gradient-secondary';
                                                 break;
                                             case 'On Transit':
                                                 $statusClass = 'bg-gradient-info';
                                                 break;
                                             case 'On Hold':
-                                                $statusClass = 'bg-gradient-warning';
+                                                $statusClass = 'bg-gradient-danger';
                                                 break;
                                             case 'Delayed':
-                                                $statusClass = 'bg-gradient-secondary';
-                                                break;
-                                            case 'Out for Delivery':
                                                 $statusClass = 'bg-gradient-primary';
                                                 break;
+                                            case 'Out for Delivery':
+                                                $statusClass = 'bg-gradient-info';
+                                                break;
                                             case 'Failed Delivery Attempt':
-                                                $statusClass = 'bg-gradient-danger';
+                                                $statusClass = 'bg-gradient-warning';
                                                 break;
                                             case 'Delivered':
                                                 $statusClass = 'bg-gradient-success';
                                                 break;
                                             default:
-                                                $statusClass = 'bg-gradient-info';
+                                                $statusClass = 'bg-gradient-secondary';
                                         }
                                     @endphp
 

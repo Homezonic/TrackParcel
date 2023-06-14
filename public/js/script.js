@@ -62,3 +62,25 @@ function outFunc() {
     </svg>
 `;
 }
+// Toggle mobile menu visibility on button click
+document.getElementById('mobileMenuButton').addEventListener('click', function () {
+    var mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+});
+// Get the "Back to Top" button element
+const backToTopBtn = document.getElementById('backToTopBtn');
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  const mainContent = document.getElementById('MainContent');
+  if (scrollPosition > mainContent.offsetTop) {
+    backToTopBtn.classList.remove('hidden');
+  } else {
+    backToTopBtn.classList.add('hidden');
+  }
+});
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}

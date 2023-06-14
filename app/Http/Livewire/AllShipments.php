@@ -10,7 +10,7 @@ class AllShipments extends Component
 {
     use WithPagination;
     protected $shipments;
-    public $perPage = 5;
+    public $perPage = 10;
 
     public $showDemoNotification    = false;
     public $showSuccesNotification  = false;

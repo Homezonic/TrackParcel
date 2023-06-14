@@ -1,30 +1,8 @@
 <x-layouts.main>
-    <section class="bg-gray-900 text-white" id="MainContent">
-        <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
-            <div class="mx-auto max-w-3xl text-center">
-                <h1
-                    class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-                    {{__('tpl.welcomeTitle')}}
-
-                    <span class="sm:block"> {{__('tpl.welcomeTag')}} </span>
-                </h1>
-
-                <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
-                    {{__('tpl.aboutusheader')}}
-                </p>
-
-                <div class="mt-8 flex flex-wrap justify-center gap-4">
-                    <a class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-                        href="{{ route('about-us') }}">
-                        About Us
-                    </a>
-
-                    <a class="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-                        href="{{ route('contact-us') }}">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
+    <section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" style="background-image: url('{{ asset('assets/img/bg_img.jpg') }}')">
+        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-24">
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl"> {{ ucwords(str_replace('-', ' ', Route::currentRouteName())) }}            </h1>
+            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{{ __('tpl.aboutusheader') }}</p>
         </div>
     </section>
     <section class="bg-white">
