@@ -4,6 +4,7 @@ namespace App\View\Components\Layouts;
 
 use App\Models\Setting;
 use App\Models\Shipment;
+use App\Models\CustomCode;
 use Illuminate\View\Component;
 
 class MainApp extends Component
@@ -14,6 +15,9 @@ class MainApp extends Component
     public $siteKeywords;
     public $siteLogo;
     public $siteFavicon;
+    public $headCode;
+    public $footCode;
+    public $tawktoId;
     /**
      * Create a new component instance.
      *
@@ -22,10 +26,12 @@ class MainApp extends Component
     public function __construct()
     {
         $this->fetchSettings();
+        // $this->fetchCodes();
     }
     public function fetchSettings()
     {
-        $settings = Setting::first();
+        $settings   = Setting::first();
+        $customCode = CustomCode::first();
 
         if ($settings) {
             $this->siteName         = $settings->site_name;
@@ -33,6 +39,11 @@ class MainApp extends Component
             $this->siteKeywords     = $settings->keyword;
             $this->siteLogo         = $settings->site_logo;
             $this->siteFavicon      = $settings->site_icon;
+            $this->tawktoId         = $settings->tawkto_id;
+        }
+        if ($customCode) {
+            $this->headCode         = $customCode->header_code;
+            $this->footCode         = $customCode->footer_code;
         }
     }
     /**

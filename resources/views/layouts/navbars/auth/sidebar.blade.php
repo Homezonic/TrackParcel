@@ -194,7 +194,7 @@
                 </a>
             </li>
             <li class="nav-link mb-0">
-                <a href="#"
+                <a href="https://help.shlnk.cc/"
                     class="btn btn-primary btn-sm active px-5 text-white" target="_blank" role="button" aria-pressed="true">
                     Support</a>
             </li>

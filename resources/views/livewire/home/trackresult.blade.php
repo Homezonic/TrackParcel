@@ -1,6 +1,15 @@
 <x-layouts.main>
     <section class="bg-gray-50"> </section>
         @if(isset($trackingInfo))
+        <div class="p-8 md:p-12 lg:px-10 lg:py-10">
+            <div class="mx-auto mt-5 max-w-xl">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Result for: </strong>
+                    <span class="block sm:inline"> {{ $trackingInfo['tracking_number'] }}</span>
+                  </div>
+
+            </div>
+        </div>
         <section class="bg-gray-100">
             <div class="mx-auto max-w-[1340px] px-4 py-16 sm:px-6 sm:py-4 lg:mr-0 lg:pl-8 lg:pr-0">
                 <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-3 lg:items-center lg:gap-x-16">

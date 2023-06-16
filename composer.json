@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "homezonic/trackparcel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A Tracking Parcel & Courier Script.",
     "keywords": [
-        "framework",
-        "laravel"
+        "courier",
+        "trackparcel"
     ],
     "license": "MIT",
     "require": {

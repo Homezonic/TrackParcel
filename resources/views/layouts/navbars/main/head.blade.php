@@ -10,15 +10,9 @@
             <div class="hidden md:block">
                 <nav aria-label="Site Nav">
                     <ul class="flex items-center gap-6 text-sm">
-                        <li>
-                            <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('index') }}">Home</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('about-us') }}">About Us</a>
-                        </li>
-                        <li>
-                            <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('contact-us') }}">Contact Us</a>
-                        </li>
+                        <li><a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('index') }}">Home</a></li>
+                        <li><a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('about-us') }}">About Us</a></li>
+                        <li><a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('contact-us') }}">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -42,15 +36,9 @@
     <!-- Mobile Menu -->
     <nav id="mobileMenu" class="md:hidden hidden bg-gray-100 p-4">
         <ul class="flex flex-col gap-4 text-sm">
-            <li>
-                <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('index') }}">Home</a>
-            </li>
-            <li>
-                <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('about-us') }}">About Us</a>
-            </li>
-            <li>
-                <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('contact-us') }}">Contact Us</a>
-            </li>
+            <li> <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('index') }}">Home</a></li>
+            <li> <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('about-us') }}">About Us</a></li>
+            <li> <a class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('contact-us') }}">Contact Us</a></li>
         </ul>
     </nav>
 </header>

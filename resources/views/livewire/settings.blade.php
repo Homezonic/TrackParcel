@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="tawktoId" class="form-label">Tawk.to ID</label>
+                                        <label for="tawktoId" class="form-label">Tawk.to ID (xxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxx)</label>
                                         <input type="text" wire:model.defer="settings.tawkto_id" class="form-control" id="tawktoId">
                                         @error('settings.tawkto_id') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>

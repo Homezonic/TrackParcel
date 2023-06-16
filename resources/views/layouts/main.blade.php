@@ -1,12 +1,13 @@
 <x-layouts.main-app>
-    @if(in_array(request()->route()->getName(), ['index', 'track', 'about-us']))
+    @if(in_array(request()->route()->getName(), ['index', 'track', 'about-us','contact-us']))
         @include('layouts.navbars.main.head')
         @elseif (in_array(request()->route()->getName(), ['trackresult', 'search']))
         @include('layouts.navbars.main.head')
-        <div class="pt-40 bg-gray-100"></div>
+        <div class="pt-4 bg-gray-100"></div>
     @endif
         {{ $slot }}
-    @if(in_array(request()->route()->getName(), ['index', 'track', 'trackresult', 'search', 'about-us']))
+    @if(in_array(request()->route()->getName(), ['index', 'track', 'trackresult', 'search', 'about-us','contact-us']))
             @include('layouts.footers.main.footer')
+
     @endif
 </x-layouts.main-app>
